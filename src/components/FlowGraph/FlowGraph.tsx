@@ -9,12 +9,12 @@ import ReactFlow, {
   BackgroundVariant,
   ReactFlowProvider
 } from 'reactflow'
-import type { Connection } from 'reactflow'
+import type { Connection, Node } from 'reactflow'
 import 'reactflow/dist/style.css'
 import { useApiData } from '../../hooks/useApiData'
 import { useActionsData } from '../../hooks/useActionsData'
 import { transformApiDataToFlow } from '../../utils/flowTransform'
-import type { FlowNodeData } from '../../types/api'
+import type { FlowNodeData, ActionData } from '../../types/api'
 import styles from './FlowGraph.module.css'
 
 const FlowGraph = () => {
@@ -44,6 +44,41 @@ const FlowGraph = () => {
   const onConnect = useCallback(
     (params: Connection) => setFlowEdges((eds) => addEdge(params, eds)),
     [setFlowEdges]
+  )
+
+  const handleActionClick = useCallback(
+    (action: ActionData) => {
+      // Generate a unique ID for the new node
+      const newNodeId = `action-${action.id}-${Date.now()}`
+
+      // Find a good position for the new node (offset from center)
+      const randomOffset = () => Math.random() * 200 - 100
+      const newPosition = {
+        x: 400 + randomOffset(),
+        y: 300 + randomOffset(),
+      }
+
+      // Create the new node
+      const newNode: Node<FlowNodeData> = {
+        id: newNodeId,
+        type: 'default',
+        position: newPosition,
+        data: {
+          label:
+            action.type === 'tool' && action.service
+              ? `${action.name} (${action.service})`
+              : action.name,
+          action: action.name,
+          templateId: action.id,
+          actionType: action.type,
+          service: action.service,
+        },
+      }
+
+      // Add the new node to the flow
+      setFlowNodes((nodes) => [...nodes, newNode])
+    },
+    [setFlowNodes]
   )
 
   if (loading) {
@@ -80,9 +115,24 @@ const FlowGraph = () => {
       <div className={styles.mainContent}>
         <div className={styles.sidebar}>
           <h3>Available Actions</h3>
+          <p className={styles.sidebarDescription}>
+            Click on any action below to add it to the graph
+          </p>
           <div className={styles.actionsList}>
             {actions.map((action) => (
-              <div key={action.id} className={styles.actionItem}>
+              <div
+                key={action.id}
+                className={styles.actionItem}
+                onClick={() => handleActionClick(action)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    handleActionClick(action)
+                  }
+                }}
+              >
                 <div className={styles.actionName}>{action.name}</div>
                 <div className={styles.actionMeta}>
                   <span className={styles.actionType} data-type={action.type}>

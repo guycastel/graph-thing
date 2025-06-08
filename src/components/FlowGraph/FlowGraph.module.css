@@ -52,6 +52,13 @@
   padding-bottom: 0.5rem;
 }
 
+.sidebarDescription {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  color: #64748b;
+  font-style: italic;
+}
+
 .actionsList {
   display: flex;
   flex-direction: column;
@@ -64,12 +71,26 @@
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   transition: all 0.2s ease;
+  cursor: pointer;
+    user-select: none;
 }
 
 .actionItem:hover {
   background: #f1f5f9;
   border-color: #cbd5e1;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 10%);
+  transform: translateY(-1px);
+  }
+  
+  .actionItem:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 10%);
+  }
+  
+  .actionItem:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px #3b82f640;
 }
 
 .actionName {
@@ -109,6 +130,7 @@
   color: #64748b;
   font-style: italic;
 }
+
 .flowWrapper {
   flex: 1;
   position: relative;
