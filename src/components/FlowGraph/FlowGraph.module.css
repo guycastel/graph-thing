@@ -1,0 +1,103 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f8fafc;
+}
+
+.header {
+  padding: 1rem 2rem;
+  background: white;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  z-index: 10;
+}
+
+.header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.875rem;
+}
+
+.flowWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 1.125rem;
+  color: #64748b;
+}
+
+.error {
+  flex-direction: column;
+  text-align: center;
+  color: #dc2626;
+}
+
+.error h3 {
+  margin: 0 0 0.5rem 0;
+  color: #dc2626;
+}
+
+.error p {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #7f1d1d;
+}
+
+/* React Flow customizations */
+.container :global(.react-flow__node-default) {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e293b;
+  min-width: 120px;
+  text-align: center;
+}
+
+.container :global(.react-flow__node-default:hover) {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.container :global(.react-flow__node-default.selected) {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px #3b82f640;
+}
+
+.container :global(.react-flow__edge-default) {
+  stroke: #6b7280;
+  stroke-width: 2;
+}
+
+.container :global(.react-flow__edge-default.selected) {
+  stroke: #3b82f6;
+}
+
+.container :global(.react-flow__controls) {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.container :global(.react-flow__minimap) {
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+}

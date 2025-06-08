@@ -1,0 +1,183 @@
+[
+  {
+    "id": "0e5394ad-ad14-42ff-92aa-e9bc9c9bcdf1",
+    "children": [
+      "beffb32f-d240-49b0-9c7f-484755b1ce35"
+    ],
+    "position": {
+      "x": 263,
+      "y": 101
+    },
+    "templateId": "922a3767-4e6a-4a38-ac73-0dafadef0240",
+    "action": "start"
+  },
+  {
+    "id": "beffb32f-d240-49b0-9c7f-484755b1ce35",
+    "children": [
+      "3a0a35a9-2cc4-46a2-821c-811e642282e7",
+      "d79f6eb8-882b-4c40-a089-b5450e4d48d7",
+      "54b929de-df57-458c-ad2e-343ec6c7230b",
+      "64c013ca-6c7a-4baf-a42b-e438d9d5925e"
+    ],
+    "position": {
+      "x": 257,
+      "y": 250
+    },
+    "templateId": "f1464804-316a-4c99-8ba6-2c0831eafb20",
+    "action": "Extract email content"
+  },
+  {
+    "id": "d79f6eb8-882b-4c40-a089-b5450e4d48d7",
+    "children": [
+      "458c851b-43a3-49dd-92a9-e9df034b3c34"
+    ],
+    "position": {
+      "x": 278,
+      "y": 422
+    },
+    "templateId": "e75d9512-6605-4dee-96b7-df8c9ce1192c",
+    "action": "Analyze email for phishing"
+  },
+  {
+    "id": "3a0a35a9-2cc4-46a2-821c-811e642282e7",
+    "children": [
+      "458c851b-43a3-49dd-92a9-e9df034b3c34"
+    ],
+    "position": {
+      "x": 29,
+      "y": 415
+    },
+    "templateId": "93017cff-fb44-4f6a-8549-1c1e164ed817",
+    "action": "Extract info from Google sheets"
+  },
+  {
+    "id": "54b929de-df57-458c-ad2e-343ec6c7230b",
+    "children": [
+      "458c851b-43a3-49dd-92a9-e9df034b3c34"
+    ],
+    "position": {
+      "x": 559,
+      "y": 426
+    },
+    "templateId": "e2b7a075-4eca-4362-ad7c-8dc98e588d6",
+    "action": "Run Microsoft Sentinel query"
+  },
+  {
+    "id": "458c851b-43a3-49dd-92a9-e9df034b3c34",
+    "children": [
+      "c8b11588-166d-4977-ad19-d096a6e3198f",
+      "0605c5b0-252f-4ac9-a075-4d9d8b0402fb"
+    ],
+    "position": {
+      "x": 262.667357408368,
+      "y": 597.322545650831
+    },
+    "templateId": "54ef42c1-33df-4415-a56c-7f24a16c70f1",
+    "action": "Triage - Get input from analyst"
+  },
+  {
+    "id": "64c013ca-6c7a-4baf-a42b-e438d9d5925e",
+    "children": [
+      "458c851b-43a3-49dd-92a9-e9df034b3c34"
+    ],
+    "position": {
+      "x": -242.896332574094,
+      "y": 413.481203839027
+    },
+    "templateId": "e07cc226-873c-4cbc-b84a-6244e925057c",
+    "action": "Check URL in Virus Total"
+  },
+  {
+    "id": "78ed2a7d-344e-48ef-a8a2-f06e81ad8f14",
+    "children": [
+      "49da7700-e786-4b03-b78f-8b78ca6afaa2"
+    ],
+    "position": {
+      "x": 54.9704129090791,
+      "y": 890.593257588709
+    },
+    "templateId": "eb1adb7c-56d4-4110-b20a-c5740aa49c13",
+    "action": "Record investigation summary"
+  },
+  {
+    "id": "0605c5b0-252f-4ac9-a075-4d9d8b0402fb",
+    "children": [
+      "78ed2a7d-344e-48ef-a8a2-f06e81ad8f14"
+    ],
+    "position": {
+      "x": 75.7619932330331,
+      "y": 761.466600839942
+    },
+    "templateId": "81619280-f047-4038-8b32-5dd0065ca464",
+    "action": "Path"
+  },
+  {
+    "id": "c8b11588-166d-4977-ad19-d096a6e3198f",
+    "children": [
+      "ce8841c1-1c12-4343-bf7c-604e304ea022",
+      "c42aa7ee-927f-4aa0-996c-64a169283d04"
+    ],
+    "position": {
+      "x": 454.387613869249,
+      "y": 769.126656748768
+    },
+    "templateId": "81619280-f047-4038-8b32-5dd0065ca464",
+    "action": "Path"
+  },
+  {
+    "id": "49da7700-e786-4b03-b78f-8b78ca6afaa2",
+    "children": [],
+    "position": {
+      "x": 75.7619932330331,
+      "y": 1050.36013797278
+    },
+    "templateId": "f4b433aa-8537-42f6-ad77-be6f40fa4c32",
+    "action": "end"
+  },
+  {
+    "id": "ce8841c1-1c12-4343-bf7c-604e304ea022",
+    "children": [
+      "62a5e947-c83b-42e2-a6b6-792185107a1e"
+    ],
+    "position": {
+      "x": 393.107166598648,
+      "y": 907.007663107621
+    },
+    "templateId": "929b5357-d273-47b6-a40f-3ca701c29cad",
+    "action": "Report URL in Google"
+  },
+  {
+    "id": "c42aa7ee-927f-4aa0-996c-64a169283d04",
+    "children": [
+      "62a5e947-c83b-42e2-a6b6-792185107a1e"
+    ],
+    "position": {
+      "x": 644.794717888618,
+      "y": 912.479131613924
+    },
+    "templateId": "81f417eb-ddbc-426b-a9cc-53cf5d2cc690",
+    "action": "Report URL in Microsoft"
+  },
+  {
+    "id": "62a5e947-c83b-42e2-a6b6-792185107a1e",
+    "children": [
+      "657dd873-6d41-4ff7-af5b-5c2a6b4ec00d"
+    ],
+    "position": {
+      "x": 509.102298932286,
+      "y": 1053.64301907656
+    },
+    "templateId": "eb1adb7c-56d4-4110-b20a-c5740aa49c13",
+    "action": "Record investigation summary"
+  },
+  {
+    "id": "657dd873-6d41-4ff7-af5b-5c2a6b4ec00d",
+    "children": [],
+    "position": {
+      "x": 526.610998152458,
+      "y": 1204.65554985054
+    },
+    "templateId": "f4b433aa-8537-42f6-ad77-be6f40fa4c32",
+    "action": "end"
+  }
+]
