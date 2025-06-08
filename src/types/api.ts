@@ -9,8 +9,17 @@ export interface NodeData {
   action: string
 }
 
+export interface ActionData {
+  id: string
+  name: string
+  type: string
+  service?: string
+}
+
 export interface FlowNodeData {
   label: string
   action: string
   templateId: string
+  actionType?: string
+  service?: string
 }

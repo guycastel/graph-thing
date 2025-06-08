@@ -1,0 +1,118 @@
+[
+  {
+    "id": "6d186745-deff-4959-8763-91782cfcff1d",
+    "name": "Run domain take down",
+    "type": "tool",
+    "service": "Phishfort"
+  },
+  {
+    "id": "81619280-f047-4038-8b32-5dd0065ca464",
+    "name": "path",
+    "type": "action"
+  },
+  {
+    "id": "93017cff-fb44-4f6a-8549-1c1e164ed817",
+    "name": "Extract information",
+    "type": "tool",
+    "service": "Google Sheets"
+  },
+  {
+    "id": "2d21ce3f-e9b7-4d4a-89f6-63493b628c5e",
+    "name": "Open attached email",
+    "type": "tool",
+    "service": "Outlook"
+  },
+  {
+    "id": "922a3767-4e6a-4a38-ac73-0dafadef0240",
+    "name": "start",
+    "type": "action"
+  },
+  {
+    "id": "f4b433aa-8537-42f6-ad77-be6f40fa4c32",
+    "name": "end",
+    "type": "action"
+  },
+  {
+    "id": "54ef42c1-33df-4415-a56c-7f24a16c70f1",
+    "name": "triage",
+    "type": "action"
+  },
+  {
+    "id": "999dc4c3-b202-471a-8b79-51c96fa9ab5b",
+    "name": "Extract sentinel entities",
+    "type": "tool",
+    "service": "Sentinel"
+  },
+  {
+    "id": "e2b7a075-4eca-4362-ad7c-8dc98e588d6",
+    "name": "Run sentinel query",
+    "type": "tool",
+    "service": "Sentinel"
+  },
+  {
+    "id": "e07cc226-873c-4cbc-b84a-6244e925057c",
+    "name": "Check URL reputation",
+    "type": "tool",
+    "service": "VirusTotal"
+  },
+  {
+    "id": "201d1355-0835-49f6-8442-8d92f410731a",
+    "name": "Check IP reputation",
+    "type": "tool",
+    "service": "VirusTotal"
+  },
+  {
+    "id": "81f417eb-ddbc-426b-a9cc-53cf5d2cc690",
+    "name": "Report URL",
+    "type": "tool",
+    "service": "Microsoft"
+  },
+  {
+    "id": "6a2342ef-1d99-41cd-897a-22c12aaf03b4",
+    "name": "Check URL reputation",
+    "type": "tool",
+    "service": "URLScan"
+  },
+  {
+    "id": "929b5357-d273-47b6-a40f-3ca701c29cad",
+    "name": "Report URL",
+    "type": "tool",
+    "service": "Google"
+  },
+  {
+    "id": "eb1adb7c-56d4-4110-b20a-c5740aa49c13",
+    "name": "Record investigation summary",
+    "type": "tool",
+    "service": "Sentinel"
+  },
+  {
+    "id": "e75d9512-6605-4dee-96b7-df8c9ce1192c",
+    "name": "Analyze email for phishing",
+    "type": "tool",
+    "service": "Outlook"
+  },
+  {
+    "id": "6271e27c294a43c79acb9ed22f2c835b",
+    "name": "Unimplemented",
+    "type": "tool",
+    "service": "Unimplemented"
+  },
+  {
+    "id": "1be0f99f5c7c4a0086a4e1a71dea73d2",
+    "name": "Investigate IP Addresses on AbuseIPDB",
+    "type": "tool",
+    "service": "www.abuseipdb.com"
+  },
+  {
+    "id": "1aec789a-f543-4e30-b69f-939703d620a8",
+    "name": "Analyze URL screenshot",
+    "type": "tool",
+    "service": "URLScan"
+  },
+  {
+    "id": "f1464804-316a-4c99-8ba6-2c0831eafb20",
+    "name": "Extract email content",
+    "type": "tool",
+    "service": "Outlook"
+  }
+]
