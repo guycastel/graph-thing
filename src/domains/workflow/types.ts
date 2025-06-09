@@ -9,13 +9,6 @@ export interface GraphNodeData {
   action: string
 }
 
-export interface ActionData {
-  id: string
-  name: string
-  type: string
-  service?: string
-}
-
 export interface FlowNodeData {
   label: string
   action: string

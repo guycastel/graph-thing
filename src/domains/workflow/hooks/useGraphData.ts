@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { GraphNodeData } from '@/interfaces/interfaces'
+import type { GraphNodeData } from '../types'
 
 const GRAPH_API_URL = 'https://mocki.io/v1/dc0ff690-cc05-4f84-b1d7-e96d354994a2'
 

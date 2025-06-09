@@ -1,10 +1,10 @@
-import { useAppContext } from '@/appContext/useAppContext'
-import type { AppContextType } from '@/appContext'
-import FlowGraph from '@/components/FlowGraph'
-import SidePanel from '@/components/SidePanel'
-import styles from './MainPage.module.css'
+import { useAppContext } from '@/context/useAppContext'
+import type { AppContextType } from '@/context/AppContext'
+import FlowGraph from '@/domains/workflow/components/FlowGraph'
+import ActionPanel from '@/domains/actions/components/ActionPanel'
+import styles from './WorkflowPage.module.css'
 
-const MainPage = () => {
+const WorkflowPage = () => {
   const { actions, handleActionClick, loading, error, stats }: AppContextType = useAppContext()
 
   if (loading) {
@@ -36,11 +36,11 @@ const MainPage = () => {
         </p>
       </div>
       <div className={styles.mainContent}>
-        <SidePanel actions={actions} onActionClick={handleActionClick} isLoading={loading} />
+        <ActionPanel actions={actions} onActionClick={handleActionClick} isLoading={loading} />
         <FlowGraph />
       </div>
     </div>
   )
 }
 
-export default MainPage
+export default WorkflowPage

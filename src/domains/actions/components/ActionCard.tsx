@@ -1,4 +1,4 @@
-import type { ActionData } from '@/interfaces/interfaces'
+import type { ActionData } from '../types'
 import styles from './ActionCard.module.css'
 
 interface ActionCardProps {

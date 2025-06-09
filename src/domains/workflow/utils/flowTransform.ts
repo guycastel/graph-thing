@@ -1,5 +1,6 @@
 import type { Node, Edge } from 'reactflow'
-import type { GraphNodeData, FlowNodeData, ActionData } from '@/interfaces/interfaces'
+import type { GraphNodeData, FlowNodeData } from '../types'
+import type { ActionData } from '@/domains/actions/types'
 
 export const transformApiDataToFlow = (
   apiData: GraphNodeData[], 

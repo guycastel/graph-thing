@@ -1,14 +1,14 @@
-import type { ActionData } from '@/interfaces/interfaces'
-import ActionCard from '@/components/SidePanel/ActionCard'
-import styles from './SidePanel.module.css'
+import type { ActionData } from '../types'
+import ActionCard from './ActionCard'
+import styles from './ActionPanel.module.css'
 
-interface SidePanelProps {
+interface ActionPanelProps {
   actions: ActionData[]
   onActionClick: (action: ActionData) => void
   isLoading?: boolean
 }
 
-const SidePanel = ({ actions, onActionClick, isLoading }: SidePanelProps) => {
+const ActionPanel = ({ actions, onActionClick, isLoading }: ActionPanelProps) => {
   if (isLoading) {
     return (
       <div className={styles.sidebar}>
@@ -37,4 +37,4 @@ const SidePanel = ({ actions, onActionClick, isLoading }: SidePanelProps) => {
   )
 }
 
-export default SidePanel
+export default ActionPanel

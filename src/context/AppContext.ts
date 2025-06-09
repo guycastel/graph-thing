@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 import type { Node, Edge, Connection, NodeChange, EdgeChange } from 'reactflow'
-import type { FlowNodeData, ActionData } from '@/interfaces/interfaces'
+import type { FlowNodeData } from '@/domains/workflow/types'
+import type { ActionData } from '@/domains/actions/types'
 
 export interface AppContextType {
   // Data

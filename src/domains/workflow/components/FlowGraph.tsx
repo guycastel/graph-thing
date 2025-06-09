@@ -6,8 +6,8 @@ import ReactFlow, {
   ReactFlowProvider,
 } from 'reactflow'
 import 'reactflow/dist/style.css'
-import { useAppContext } from '@/appContext/useAppContext'
-import type { AppContextType } from '@/appContext/AppContext'
+import { useAppContext } from '@/context/useAppContext'
+import type { AppContextType } from '@/context/AppContext'
 import styles from './FlowGraph.module.css'
 
 const FlowGraph = () => {

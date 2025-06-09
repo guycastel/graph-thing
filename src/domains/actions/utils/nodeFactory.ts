@@ -1,5 +1,6 @@
 import type { Node } from 'reactflow'
-import type { FlowNodeData, ActionData } from '@/interfaces/interfaces'
+import type { FlowNodeData } from '@/domains/workflow/types'
+import type { ActionData } from '../types'
 
 export interface NodeCreationOptions {
   basePosition?: { x: number; y: number }

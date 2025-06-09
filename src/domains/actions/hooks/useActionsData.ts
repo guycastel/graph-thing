@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import type { ActionData } from '@/interfaces/interfaces'
+import type { ActionData } from '../types'
 
 const ACTIONS_API_URL = 'https://mocki.io/v1/dfd12cc0-2698-49e4-a71d-f21839ded396'
 

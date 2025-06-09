@@ -1,18 +1,19 @@
 import { useCallback, useMemo, useEffect } from 'react'
 import { useNodesState, useEdgesState, addEdge } from 'reactflow'
 import type { Connection } from 'reactflow'
-import { useGraphData } from '@/hooks/useGraphData'
-import { useActionsData } from '@/hooks/useActionsData'
-import { transformApiDataToFlow } from '@/utils/flowTransform'
-import { createNodeFromAction } from '@/utils/nodeFactory'
-import type { FlowNodeData, ActionData } from '@/interfaces/interfaces'
+import { useGraphData } from '@/domains/workflow/hooks/useGraphData'
+import { useActionsData } from '@/domains/actions/hooks/useActionsData'
+import { transformApiDataToFlow } from '@/domains/workflow/utils/flowTransform'
+import { createNodeFromAction } from '@/domains/actions/utils/nodeFactory'
+import type { FlowNodeData } from '@/domains/workflow/types'
+import type { ActionData } from '@/domains/actions/types'
 import { AppContext, type AppContextType } from './AppContext'
 
-interface AppContextProviderProps {
+interface AppProviderProps {
   children: React.ReactNode
 }
 
-export const AppContextProvider = ({ children }: AppContextProviderProps) => {
+export const AppProvider = ({ children }: AppProviderProps) => {
   const { data, loading: nodesLoading, error: nodesError } = useGraphData()
   const { actions, loading: actionsLoading, error: actionsError } = useActionsData()
 
