@@ -1,162 +1,154 @@
-# React + TypeScript + Vite Template
+# Workflow Graph Visualization
 
-A clean, minimal template for starting new React projects with modern tooling.
+An interactive workflow graph visualization tool built with React, TypeScript, and ReactFlow. This application allows users to visualize complex workflow structures and dynamically add new actions to create custom workflows.
 
-## 🚀 Features
+## 🎯 Features
 
-- **React 18** with TypeScript
-- **Vite** for fast development and building
-- **CSS Modules** for scoped styling
-- **clsx** for conditional class names
-- **ESLint** for code quality
-- **Stylelint** for CSS linting
-- **Prettier** for code formatting
-- **npm** as package manager
+- **Interactive Graph Visualization** - Built with ReactFlow for smooth pan/zoom interactions
+- **Dynamic Action Library** - Add actions from a comprehensive library to build workflows
+- **Domain-Driven Architecture** - Clean separation between workflow and actions domains
+- **Type-Safe Development** - Full TypeScript support with proper domain type organization
+- **Modern React Patterns** - Functional components with hooks and context management
+- **Responsive Design** - Clean, professional UI with a centralized design system
 
-## 📦 Getting Started
+## 🏗️ Architecture
 
-1. Clone this repository or use it as a template
+### Domain-Driven Structure
+The application follows domain-driven design principles with clear separation of concerns:
+
+```
+src/
+├── app/                    # Application layer
+│   ├── App.tsx            # Root component with providers
+│   └── main.tsx           # Application entry point
+├── domains/               # Business domains
+│   ├── actions/           # Action library domain
+│   │   ├── components/    # ActionCard, ActionPanel
+│   │   ├── hooks/         # useActionsData
+│   │   ├── utils/         # nodeFactory
+│   │   └── types.ts       # ActionData interface
+│   └── workflow/          # Workflow visualization domain
+│       ├── components/    # FlowGraph
+│       ├── hooks/         # useGraphData
+│       ├── utils/         # flowTransform
+│       └── types.ts       # GraphNodeData, FlowNodeData
+├── context/               # Application state management
+├── pages/                 # Page-level components
+└── shared/               # Shared utilities and types
+```
+
+### Key Domains
+
+**Actions Domain**
+- Manages the library of available workflow actions
+- Handles action selection and node creation
+- Types: Tools (with services) and Actions (workflow controls)
+
+**Workflow Domain**  
+- Manages graph visualization and interactions
+- Handles node positioning, connections, and flow state
+- Integrates with ReactFlow for rendering
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd graph-thing
+   ```
+
 2. Install dependencies:
    ```bash
    npm install
    ```
-3. Start development server:
+
+3. Start the development server:
    ```bash
    npm run dev
    ```
 
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
 ## 📜 Available Scripts
 
-- `npm run dev` - Start development server
+- `npm run dev` - Start development server with hot reload
 - `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run lint:fix` - Run ESLint with auto-fix
-- `npm run lint:css` - Run Stylelint on CSS files
-- `npm run lint:css:fix` - Run Stylelint with auto-fix
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint code quality checks
+- `npm run lint:fix` - Run ESLint with automatic fixes
+- `npm run lint:css` - Run Stylelint for CSS quality
+- `npm run lint:css:fix` - Run Stylelint with automatic fixes
 - `npm run format` - Format code with Prettier
-- `npm run format:check` - Check code formatting
+- `npm run format:check` - Check code formatting without changes
 
-## 🛠️ Project Structure
+## 🎨 Design System
 
-```
-src/
-├── App.tsx              # Main App component
-├── App.module.css       # App styles (CSS Modules)
-├── main.tsx             # App entry point
-├── index.css            # Global styles
-├── components/
-│   └── Button/          # Example Button component
-│       ├── Button.tsx
-│       ├── Button.module.css
-│       └── index.ts
-├── types/
-│   └── css.d.ts         # CSS Modules TypeScript definitions
-└── assets/              # Static assets
-```
+The application uses a centralized design system with CSS custom properties:
 
-## 🎨 CSS Modules Usage
+- **Color System** - Semantic color tokens (primary, success, danger, etc.)
+- **Typography** - Consistent font scales and weights  
+- **Spacing** - Standardized padding and margin values
+- **Shadows** - Layered shadow system for depth
+- **CSS Modules** - Scoped component styling
 
-This template uses CSS Modules for component-scoped styling:
+## 🔧 Technology Stack
 
-```tsx
-// Component.tsx
-import styles from './Component.module.css'
+- **React 18** - Modern React with hooks and concurrent features
+- **TypeScript** - Type-safe development with strict configuration
+- **ReactFlow** - Interactive node-based graph visualization
+- **Vite** - Fast development server and optimized builds
+- **CSS Modules** - Scoped styling with TypeScript support
+- **ESLint + Prettier** - Code quality and formatting
+- **Stylelint** - CSS linting and best practices
 
-function Component() {
-  return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Hello World</h1>
-    </div>
-  )
-}
-```
+## 🏛️ Code Standards
 
-```css
-/* Component.module.css */
-.container {
-  padding: 1rem;
-}
+### TypeScript
+- Strict type checking enabled
+- Interfaces preferred over types for extensibility
+- Domain-specific type organization
+- Proper import/export patterns
 
-.title {
-  font-size: 2rem;
-  color: #333;
-}
-```
+### React
+- Functional components with hooks
+- Context for state management
+- Proper component composition
+- Accessibility-first development
 
-### Benefits
+### CSS
+- CSS Modules for component scoping
+- Centralized design tokens
+- Mobile-first responsive design
+- Semantic class naming
 
-- **Scoped styles** - No global CSS conflicts
-- **TypeScript support** - Autocomplete for class names
-- **Automatic optimization** - Vite handles minification and hashing
+### Code Quality
+- ESLint for JavaScript/TypeScript quality
+- Stylelint for CSS best practices
+- Prettier for consistent formatting
+- No semicolons style (modern JavaScript)
 
-## 🎯 Conditional Styling with clsx
+## 📊 Data Flow
 
-For dynamic class names, this template includes `clsx` for clean conditional styling:
+1. **API Integration** - Fetches workflow data and available actions
+2. **Context Management** - Centralizes state in AppContext
+3. **Domain Processing** - Transforms API data for visualization
+4. **Interactive Updates** - Real-time graph updates when adding actions
+5. **Type Safety** - End-to-end TypeScript coverage
 
-```tsx
-import clsx from 'clsx'
-import styles from './Component.module.css'
+## 🤝 Contributing
 
-function Component({ isActive, isDisabled }) {
-  return (
-    <div
-      className={clsx(styles.button, {
-        [styles.active]: isActive,
-        [styles.disabled]: isDisabled,
-      })}
-    >
-      Dynamic Button
-    </div>
-  )
-}
-```
+1. Follow the established domain-driven architecture
+2. Maintain type safety across all new features
+3. Use the centralized design system for UI components
+4. Write comprehensive component documentation
+5. Ensure all code passes linting and formatting checks
 
-### clsx Benefits
+## 📄 License
 
-- **Clean syntax** - No more template literals for complex conditions
-- **Conditional classes** - Easy true/false class toggling
-- **Multiple formats** - Supports strings, objects, arrays
-- **TypeScript friendly** - Full type safety with CSS Modules
-
-## 🔧 Configuration
-
-- ESLint configuration in `eslint.config.js`
-- Stylelint configuration in `.stylelintrc.json`
-- Prettier configuration in `.prettierrc`
-- TypeScript configuration in `tsconfig.json`
-- Vite configuration in `vite.config.ts`
-
-### ESLint Plugins Included
-
-- **react** - React-specific linting rules
-- **react-hooks** - React Hooks rules and best practices
-- **react-refresh** - React Refresh rules for development
-- **typescript-eslint** - TypeScript-specific linting rules
-
-### Modern ESLint + Prettier Setup
-
-This template follows modern best practices by separating concerns:
-
-- **ESLint** handles code quality and logic issues
-- **Prettier** handles code formatting exclusively
-- **eslint-config-prettier** disables conflicting ESLint formatting rules
-- **No eslint-plugin-prettier** - tools run independently for better performance
-
-### Stylelint Configuration
-
-- **stylelint-config-standard** - Standard CSS rules and best practices
-- **Custom rules** - Disabled `selector-class-pattern` for CSS Modules compatibility
-- **Auto-fixable** - Many CSS issues can be automatically fixed
-
-### Code Style Rules
-
-- **No semicolons** at end of lines (ESLint + Prettier)
-- **100 characters** line length (Prettier)
-- **Single quotes** for strings (Prettier)
-- **2 spaces** for indentation (Prettier)
-- **ES5 trailing commas** (Prettier)
-
-## 📝 License
-
-This template is free to use for any project.
+This project is licensed under the MIT License.
