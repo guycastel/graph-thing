@@ -1,0 +1,74 @@
+.actionItem {
+  padding: 0.75rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+
+  /* reset button input styles */
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+  display: block;
+
+  &:hover {
+    background: var(--color-bg-hover);
+    border-color: var(--color-border-secondary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-border-focus);
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+.actionName {
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.actionMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+
+.actionType {
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  font-size: 0.625rem;
+
+  &[data-type='tool'] {
+    background: var(--color-success);
+  }
+
+  &[data-type='action'] {
+    background: var(--color-indigo-500);
+  }
+}
+
+.actionService {
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

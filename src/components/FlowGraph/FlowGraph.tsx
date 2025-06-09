@@ -1,89 +1,22 @@
-import { useCallback, useMemo, useEffect } from 'react'
 import ReactFlow, {
-  addEdge,
-  useNodesState,
-  useEdgesState,
   Controls,
   MiniMap,
   Background,
   BackgroundVariant,
-  ReactFlowProvider
+  ReactFlowProvider,
 } from 'reactflow'
-import type { Connection, Node } from 'reactflow'
 import 'reactflow/dist/style.css'
-import { useApiData } from '../../hooks/useApiData'
-import { useActionsData } from '../../hooks/useActionsData'
-import { transformApiDataToFlow } from '../../utils/flowTransform'
-import type { FlowNodeData, ActionData } from '../../types/api'
+import { useAppContext } from '@/appContext/useAppContext'
+import type { AppContextType } from '@/appContext/AppContext'
 import styles from './FlowGraph.module.css'
 
 const FlowGraph = () => {
-  const { data, loading: nodesLoading, error: nodesError } = useApiData()
-  const { actions, loading: actionsLoading, error: actionsError } = useActionsData()
-
-  const loading = nodesLoading || actionsLoading
-  const error = nodesError ?? actionsError
-
-  const { nodes, edges } = useMemo(() => {
-    if (data.length === 0) {
-      return { nodes: [], edges: [] }
-    }
-
-    return transformApiDataToFlow(data, actions)
-  }, [data, actions])
-
-  const [flowNodes, setFlowNodes, onNodesChange] = useNodesState<FlowNodeData>(nodes)
-  const [flowEdges, setFlowEdges, onEdgesChange] = useEdgesState(edges)
-
-  // Update flow state when data changes
-  useEffect(() => {
-    setFlowNodes(nodes)
-    setFlowEdges(edges)
-  }, [nodes, edges, setFlowNodes, setFlowEdges])
-
-  const onConnect = useCallback(
-    (params: Connection) => setFlowEdges((eds) => addEdge(params, eds)),
-    [setFlowEdges]
-  )
-
-  const handleActionClick = useCallback(
-    (action: ActionData) => {
-      // Generate a unique ID for the new node
-      const newNodeId = `action-${action.id}-${Date.now()}`
-
-      // Find a good position for the new node (offset from center)
-      const randomOffset = () => Math.random() * 200 - 100
-      const newPosition = {
-        x: 400 + randomOffset(),
-        y: 300 + randomOffset(),
-      }
-
-      // Create the new node
-      const newNode: Node<FlowNodeData> = {
-        id: newNodeId,
-        type: 'default',
-        position: newPosition,
-        data: {
-          label:
-            action.type === 'tool' && action.service
-              ? `${action.name} (${action.service})`
-              : action.name,
-          action: action.name,
-          templateId: action.id,
-          actionType: action.type,
-          service: action.service,
-        },
-      }
-
-      // Add the new node to the flow
-      setFlowNodes((nodes) => [...nodes, newNode])
-    },
-    [setFlowNodes]
-  )
+  const { flowNodes, flowEdges, onNodesChange, onEdgesChange, onConnect, loading, error }: AppContextType =
+    useAppContext()
 
   if (loading) {
     return (
-      <div className={styles.container}>
+      <div className={styles.flowWrapper}>
         <div className={styles.loading}>Loading graph data...</div>
       </div>
     )
@@ -91,7 +24,7 @@ const FlowGraph = () => {
 
   if (error) {
     return (
-      <div className={styles.container}>
+      <div className={styles.flowWrapper}>
         <div className={styles.error}>
           <h3>Error loading data:</h3>
           <p>{error}</p>
@@ -101,69 +34,22 @@ const FlowGraph = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h1>Workflow Graph Visualization</h1>
-        <p>
-          Interactive workflow graph with {flowNodes.length} nodes and {flowEdges.length}{' '}
-          connections
-        </p>
-        <p>
-          Nodes data: {data.length} items | Actions data: {actions.length} items
-        </p>
-      </div>
-      <div className={styles.mainContent}>
-        <div className={styles.sidebar}>
-          <h3>Available Actions</h3>
-          <p className={styles.sidebarDescription}>
-            Click on any action below to add it to the graph
-          </p>
-          <div className={styles.actionsList}>
-            {actions.map((action) => (
-              <div
-                key={action.id}
-                className={styles.actionItem}
-                onClick={() => handleActionClick(action)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    handleActionClick(action)
-                  }
-                }}
-              >
-                <div className={styles.actionName}>{action.name}</div>
-                <div className={styles.actionMeta}>
-                  <span className={styles.actionType} data-type={action.type}>
-                    {action.type}
-                  </span>
-                  {action.service && (
-                    <span className={styles.actionService}>({action.service})</span>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className={styles.flowWrapper}>
-          <ReactFlowProvider>
-            <ReactFlow
-              nodes={flowNodes}
-              edges={flowEdges}
-              onNodesChange={onNodesChange}
-              onEdgesChange={onEdgesChange}
-              onConnect={onConnect}
-              fitView
-              attributionPosition="bottom-left"
-            >
-              <Controls />
-              <MiniMap />
-              <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
-            </ReactFlow>
-          </ReactFlowProvider>
-        </div>
-      </div>
+    <div className={styles.flowWrapper}>
+      <ReactFlowProvider>
+        <ReactFlow
+          nodes={flowNodes}
+          edges={flowEdges}
+          onNodesChange={onNodesChange}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          attributionPosition="bottom-left"
+        >
+          <Controls />
+          <MiniMap />
+          <Background variant={BackgroundVariant.Dots} gap={12} size={1} />
+        </ReactFlow>
+      </ReactFlowProvider>
     </div>
   )
 }

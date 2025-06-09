@@ -1,4 +1,65 @@
 :root {
+  /* Color System - Centralized Design Tokens */
+    --color-white: #ffffff;
+    --color-black: #000000;
+  
+    /* Gray Scale */
+    --color-slate-50: #f8fafc;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
+    --color-slate-500: #64748b;
+    --color-slate-600: #475569;
+    --color-slate-700: #334155;
+    --color-slate-800: #1e293b;
+    --color-slate-900: #0f172a;
+    --color-gray-400: #6b7280;
+  
+    /* Primary Colors */
+    --color-blue-500: #3b82f6;
+    --color-blue-600: #2563eb;
+    --color-indigo-500: #6366f1;
+    --color-green-500: #10b981;
+    --color-red-500: #ef4444;
+    --color-red-600: #dc2626;
+    --color-red-800: #991b1b;
+    --color-red-900: #7f1d1d;
+  
+    /* Semantic Colors */
+    --color-primary: var(--color-blue-500);
+    --color-primary-hover: var(--color-blue-600);
+    --color-success: var(--color-green-500);
+    --color-danger: var(--color-red-600);
+    --color-danger-light: var(--color-red-500);
+    --color-danger-dark: var(--color-red-800);
+    --color-danger-darker: var(--color-red-900);
+  
+    /* Background Colors */
+    --color-bg-primary: var(--color-white);
+    --color-bg-secondary: var(--color-slate-50);
+    --color-bg-tertiary: var(--color-slate-100);
+    --color-bg-hover: var(--color-slate-100);
+  
+    /* Border Colors */
+    --color-border-primary: var(--color-slate-200);
+    --color-border-secondary: var(--color-slate-300);
+    --color-border-focus: var(--color-primary);
+  
+    /* Text Colors */
+    --color-text-primary: var(--color-slate-800);
+    --color-text-secondary: var(--color-slate-500);
+    --color-text-tertiary: var(--color-slate-600);
+    --color-text-on-primary: var(--color-white);
+    --color-text-muted: var(--color-gray-400);
+  
+    /* Shadow Colors */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+    --shadow-md: 0 1px 3px 0 rgb(0 0 0 / 10%);
+    --shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 10%);
+    --shadow-xl: 0 10px 15px -3px rgb(0 0 0 / 10%);
+    --shadow-focus: 0 0 0 2px rgb(59 130 246 / 25%);
+  
+    /* Typography */
   font-family:
     system-ui,
     -apple-system,
@@ -8,8 +69,8 @@
     sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color: #213547;
-  background-color: #fff;
+  color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;

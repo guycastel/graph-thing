@@ -1,7 +1,12 @@
-import FlowGraph from './components/FlowGraph'
+import { AppContextProvider } from '@/appContext'
+import MainPage from '@/pages/MainPage'
 
 function App() {
-  return <FlowGraph />
+  return (
+    <AppContextProvider>
+      <MainPage />
+    </AppContextProvider>
+  )
 }
 
 export default App

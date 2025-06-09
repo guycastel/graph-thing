@@ -1,8 +1,8 @@
 import type { Node, Edge } from 'reactflow'
-import type { NodeData, FlowNodeData, ActionData } from '../types/api'
+import type { GraphNodeData, FlowNodeData, ActionData } from '@/interfaces/interfaces'
 
 export const transformApiDataToFlow = (
-  apiData: NodeData[], 
+  apiData: GraphNodeData[], 
   actions: ActionData[] = []
 ): { nodes: Node<FlowNodeData>[], edges: Edge[] } => {
   // Create a map of templateId to action data for quick lookup

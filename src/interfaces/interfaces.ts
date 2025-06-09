@@ -1,4 +1,4 @@
-export interface NodeData {
+export interface GraphNodeData {
   id: string
   children: string[]
   position: {
